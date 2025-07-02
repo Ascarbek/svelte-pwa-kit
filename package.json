@@ -1,0 +1,53 @@
+{
+  "name": "svelte-pwa-kit",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --threshold error",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --threshold error --watch"
+  },
+  "devDependencies": {
+    "prettier": "3.5.3",
+    "prettier-plugin-svelte": "3.4.0",
+    "prettier-plugin-tailwindcss": "0.4.1",
+    "@sveltejs/adapter-node": "2.1.2",
+    "@sveltejs/adapter-static": "3.0.8",
+    "@sveltejs/kit": "2.22.0",
+    "@sveltejs/vite-plugin-svelte": "5.1.0",
+    "autoprefixer": "10.4.21",
+    "axios": "1.8.2",
+    "bignumber.js": "9.1.2",
+    "chart.js": "4.4.9",
+    "check-password-strength": "3.0.0",
+    "cssnano": "6.0.3",
+    "date-fns": "2.30.0",
+    "date-picker-svelte": "2.15.1",
+    "dayjs": "1.11.10",
+    "dotenv": "16.4.2",
+    "imask": "7.6.1",
+    "postcss": "8.4.35",
+    "postcss-load-config": "4.0.2",
+    "svelte": "5.34.7",
+    "svelte-check": "4.2.2",
+    "svelte-i18n": "4.0.1",
+    "svelte-preprocess": "6.0.3",
+    "tailwindcss": "3.4.17",
+    "tslib": "2.6.2",
+    "typescript": "5.8.3",
+    "uuid": "11.0.5",
+    "vite": "6.3.4",
+    "vitest": "3.0.5",
+    "zod": "3.22.4"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.2.6",
+    "@fontsource/roboto-condensed": "5.1.1",
+    "@fontsource/roboto-mono": "5.1.1"
+  },
+  "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
+}

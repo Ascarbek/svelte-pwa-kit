@@ -1,0 +1,33 @@
+# misc
+.bash_history
+*.rdb
+logs/
+*.csr
+*.key
+*.cert
+*.crt
+*.ext
+*.srl
+*.pem
+.DS_Store
+.idea
+/temp
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+tsconfig.tsbuildinfo
+
+# dev and build
+/build
+/.svelte-kit
+/package
+
+# dependencies
+node_modules
+
+# environment specifit
+.env
+.env.*
+!.env.example
+
+# user data
+/static/upload
