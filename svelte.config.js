@@ -21,9 +21,9 @@ const config = {
 
     adapter: adapter(),
     alias: {
-      '$components/*': 'src/lib/components/*',
       '$pages/*': 'src/pages/*',
       '$widgets/*': 'src/widgets/*',
+      '$icons/*': 'src/widgets/icons/*',
       '$features/*': 'src/features/*',
       '$entities/*': 'src/entities/*',
       '$stores/*': 'src/entities/stores/*',

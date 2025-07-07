@@ -1,18 +1,30 @@
 <script lang="ts">
   import { isDesktop } from '$shared/mediaQuery.js';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import {  onMount } from 'svelte';
   import type { TouchEventHandler } from 'svelte/elements';
   import { writable } from 'svelte/store';
   import Loader from '$widgets/shared/Loader.svelte';
 
-  const dispatch = createEventDispatcher<{ exit: null }>();
+  interface Props {
+    showLoader?: boolean;
+  }
 
-  export let showLoader = false;
-  let height: number = 0;
-  let screenHeight = 0;
-  export let expandedHeight = 0;
+  let height = $state(0);
+  let screenHeight = $state(0);
+  let expandedHeight = $state(0);
 
-  $: expandedHeight = screenHeight - height - 80;
+  $effect(() => {
+    expandedHeight = screenHeight - height - 80;
+  })
+
+  let startClosing = $state(false);
+
+
+  $effect(() => {
+    if (startClosing) {
+      onStartClosing();
+    }
+  });
 
   let isExpanded = false;
 
@@ -86,10 +98,6 @@
     }
     previousTouch = null;
   };
-
-  export let startClosing = false;
-
-  $: startClosing && onStartClosing();
 </script>
 
 <svelte:window bind:innerHeight="{screenHeight}" />

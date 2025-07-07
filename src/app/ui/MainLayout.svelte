@@ -3,7 +3,7 @@
   import '../styles/tailwind.css';
   import '../styles/common.css';
   import ModalQueue from '$features/modal/ui/ModalQueue.svelte';
-  import { getPWADisplayMode } from '$shared/getPWADisplayMode.js';
+  import { displayMode } from '$shared/displayMode.js';
 
   import QuickLaunch from '$features/quick-launch/ui/QuickLaunch.svelte';
   import dayjs from 'dayjs';
@@ -12,7 +12,6 @@
   import weekday from 'dayjs/plugin/weekday';
   import weekOfYear from 'dayjs/plugin/weekOfYear';
   import ru from 'dayjs/locale/ru';
-  import { onMount } from 'svelte';
 
   dayjs.locale(ru);
   dayjs.extend(utc);
@@ -20,19 +19,13 @@
   dayjs.extend(weekday);
   dayjs.extend(weekOfYear);
 
-  onMount(() => {
-    console.log(getPWADisplayMode());
+  $inspect($displayMode);
 
-  });
+  let { children } = $props();
 </script>
 
-
-  <slot />
-
+{@render children()}
 
 <QuickLaunch />
 
 <ModalQueue />
-
-
-
