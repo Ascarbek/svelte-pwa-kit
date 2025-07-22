@@ -1,20 +1,16 @@
 <script lang="ts">
-  import { popModal } from '$features/modal/api/ModalQueue.js';
-  import { MessageModal, ModalQueue, PromptModal } from '$stores/ModalQueue.js';
-  import Message from '$features/popup/ui/Message.svelte';
+  import { ModalQueue } from '$features/modal/api/ModalQueue';
+  import { popModal } from '$features/modal/api/CommonModals.js';
   import Popup from '$features/modal/ui/Popup.svelte';
-  import Prompt from '$features/popup/ui/Prompt.svelte';
 
-  $MessageModal = Message;
-  $PromptModal = Prompt;
-
-  let showLoader = false;
+  let showLoader = $state(false);
 
   const onExitPopup = (id: string) => {
     popModal(id);
   };
 
-  let startClosing: { [id: string]: boolean } = {};
+  let startClosing = $state<{ [id: string]: boolean }>({});
+  let isExpanded = $state(false);
 
   const onCloseClick = (index: string) => {
     startClosing[index] = true;
@@ -22,8 +18,8 @@
 </script>
 
 {#each $ModalQueue as modal}
-  <Popup on:exit="{() => onExitPopup(modal.id)}" {showLoader} startClosing="{startClosing[modal.id]}" let:isExpanded>
-    <svelte:component this="{modal.comp}" bind:showLoader {isExpanded} on:exit="{() => onCloseClick(modal.id)}"
-    ></svelte:component>
+  <Popup onExit={() => onExitPopup(modal.id)} {showLoader} startClosing={startClosing[modal.id]} bind:isExpanded>
+    {@const Comp = modal.comp}
+    <Comp bind:showLoader {isExpanded} onExit={() => onCloseClick(modal.id)}></Comp>
   </Popup>
 {/each}

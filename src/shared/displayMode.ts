@@ -1,6 +1,11 @@
+import { browser } from '$app/environment';
 import { readable } from 'svelte/store';
 
 export const displayMode = readable<string>('', (set) => {
+  if (!browser) {
+    set('unknown');
+    return;
+  }
   if (document.referrer.startsWith('android-app://')) set('twa');
   if (window.matchMedia('(display-mode: browser)').matches) set('browser');
   if (window.matchMedia('(display-mode: standalone)').matches) set('standalone');
