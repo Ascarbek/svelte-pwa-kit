@@ -3,8 +3,6 @@
   import '../styles/tailwind.css';
   import '../styles/common.css';
   import ModalQueue from '$features/modal/ui/ModalQueue.svelte';
-  import { displayMode } from '$shared/displayMode.js';
-
   import QuickLaunch from '$features/quick-launch/ui/QuickLaunch.svelte';
   import dayjs from 'dayjs';
   import utc from 'dayjs/plugin/utc.js';
@@ -19,13 +17,20 @@
   dayjs.extend(weekday);
   dayjs.extend(weekOfYear);
 
-  $inspect($displayMode);
-
   let { children } = $props();
 </script>
 
-{@render children()}
+<main>
+  {@render children()}
+</main>
 
 <QuickLaunch />
 
 <ModalQueue />
+
+<style lang="postcss">
+  main {
+    height: calc(100vh - 90px);
+    @apply relative overflow-auto;
+  }
+</style>
